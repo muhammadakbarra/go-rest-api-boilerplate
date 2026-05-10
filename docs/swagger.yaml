@@ -1,0 +1,192 @@
+basePath: /
+definitions:
+  internal_posts.CreatePostRequest:
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+    type: object
+  internal_posts.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  internal_posts.Post:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  internal_posts.UpdatePostRequest:
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Simple REST API using Go, chi, and PostgreSQL.
+  title: Go REST API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      description: Get the status of the API
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Health check
+      tags:
+      - health
+  /posts:
+    get:
+      description: Get a list of all posts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/internal_posts.Post'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+      summary: List all posts
+      tags:
+      - posts
+    post:
+      consumes:
+      - application/json
+      description: Create a new post with the provided title and content
+      parameters:
+      - description: Post to create
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/internal_posts.CreatePostRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal_posts.Post'
+        "400":
+          description: Invalid request body or missing required fields
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+      summary: Create a new post
+      tags:
+      - posts
+  /posts/{id}:
+    delete:
+      description: Delete an existing post by its ID
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Post not found
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+      summary: Delete a post
+      tags:
+      - posts
+    get:
+      description: Get a single post by its ID
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_posts.Post'
+        "404":
+          description: Post not found
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+      summary: Get a post by ID
+      tags:
+      - posts
+    put:
+      consumes:
+      - application/json
+      description: Update an existing post by its ID
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Post update data
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/internal_posts.UpdatePostRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal_posts.Post'
+        "400":
+          description: Invalid request body or missing required fields
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+        "404":
+          description: Post not found
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/internal_posts.ErrorResponse'
+      summary: Update a post
+      tags:
+      - posts
+swagger: "2.0"
