@@ -1,8 +1,8 @@
 # 🚀 Go REST API Boilerplate
 
-[![Go Report Card](https://goreport card.com/badge/github.com/username/go-rest-api)](https://goreportcard.com/report/github.com/username/go-rest-api)
-[![Go Doc](https://img.shields.io/badge/godoc-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/username/go-rest-api)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Go Report Card](https://goreportcard.com/badge/github.com/muhammadakbarra/go-rest-api-boilerplate)](https://goreportcard.com/report/github.com/muhammadakbarra/go-rest-api-boilerplate)
+[![Go Doc](https://img.shields.io/badge/godoc-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/muhammadakbarra/go-rest-api-boilerplate)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A modern, scalable, and high-performance REST API boilerplate built with **Go**, **Chi Router**, and **PostgreSQL**. Designed to be the perfect starting point for your next microservice or web backend.
 
