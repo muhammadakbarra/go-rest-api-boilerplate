@@ -60,7 +60,14 @@ cd go-rest-api-boilerplate
 go mod tidy
 ```
 
-### 3. Configuration
+### 3. Database Setup
+Ensure you have a PostgreSQL database created. Then, run the migration script located in the `migrations/` folder:
+```bash
+# Using psql
+psql your_db_name < migrations/000001_create_posts_table.up.sql
+```
+
+### 4. Configuration
 Copy the example environment file and update your credentials:
 ```bash
 cp .env.example .env
@@ -68,10 +75,10 @@ cp .env.example .env
 Edit `.env`:
 ```env
 APP_PORT=8080
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+DATABASE_URL=postgresql://user:password@localhost:5432/your_db_name
 ```
 
-### 4. Running the App
+### 5. Running the App
 ```bash
 go run cmd/api/main.go
 ```
