@@ -60,14 +60,7 @@ cd go-rest-api-boilerplate
 go mod tidy
 ```
 
-### 3. Database Setup
-Ensure you have a PostgreSQL database created. Then, run the migration script located in the `migrations/` folder:
-```bash
-# Using psql
-psql your_db_name < migrations/000001_create_posts_table.up.sql
-```
-
-### 4. Configuration
+### 3. Configuration
 Copy the example environment file and update your credentials:
 ```bash
 cp .env.example .env
@@ -78,9 +71,15 @@ APP_PORT=8080
 DATABASE_URL=postgresql://user:password@localhost:5432/your_db_name
 ```
 
+### 4. Database Setup
+Once `.env` is configured, run the migration to create the necessary tables:
+```bash
+make migrate
+```
+
 ### 5. Running the App
 ```bash
-go run cmd/api/main.go
+make run
 ```
 The server will start at `http://localhost:8080`.
 
@@ -94,7 +93,7 @@ The documentation is automatically generated. Once the server is running, visit:
 ### Updating Documentation
 If you modify any API handlers, regenerate the Swagger files:
 ```bash
-go run github.com/swaggo/swag/cmd/swag@latest init -g cmd/api/main.go --parseDependency --parseInternal
+make swagger
 ```
 
 ---
@@ -103,9 +102,12 @@ go run github.com/swaggo/swag/cmd/swag@latest init -g cmd/api/main.go --parseDep
 
 | Command | Description |
 | :--- | :--- |
-| `go run cmd/api/main.go` | Start the development server |
-| `go build -o bin/api cmd/api/main.go` | Build the binary |
-| `go test ./...` | Run all tests |
+| `make run` | Start the development server |
+| `make migrate` | Run database migrations |
+| `make swagger` | Regenerate Swagger documentation |
+| `make build` | Build the binary |
+| `make test` | Run all tests |
+| `make help` | Show all available commands |
 
 ---
 
