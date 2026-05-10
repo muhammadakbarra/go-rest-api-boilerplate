@@ -1,4 +1,4 @@
-module github.com/username/go-rest-api
+module github.com/muhammadakbarra/go-rest-api-boilerplate
 
 go 1.26.3
 

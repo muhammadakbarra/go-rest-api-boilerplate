@@ -55,8 +55,8 @@ A modern, scalable, and high-performance REST API boilerplate built with **Go**,
 ### 2. Installation
 Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/yourusername/go-rest-api.git
-cd go-rest-api
+git clone https://github.com/muhammadakbarra/go-rest-api-boilerplate.git
+cd go-rest-api-boilerplate
 go mod tidy
 ```
 

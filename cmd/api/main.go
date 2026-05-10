@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/username/go-rest-api/internal/config"
-	"github.com/username/go-rest-api/internal/database"
-	"github.com/username/go-rest-api/internal/posts"
-	_ "github.com/username/go-rest-api/docs"
+	"github.com/muhammadakbarra/go-rest-api-boilerplate/internal/config"
+	"github.com/muhammadakbarra/go-rest-api-boilerplate/internal/database"
+	"github.com/muhammadakbarra/go-rest-api-boilerplate/internal/posts"
+	_ "github.com/muhammadakbarra/go-rest-api-boilerplate/docs"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
